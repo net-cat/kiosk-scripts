@@ -83,11 +83,11 @@ I haven't written it yet.
 
 NOTE: Don't set password for kiosk user to keep it off login screen.
 
-> sudo useradd <kiosk>
+> ```sudo useradd <kiosk>
 > sudo cp -r /etc/skel /home/<kiosk>
 > sudo chown -R <kiosk>:<kiosk> /home/<kiosk>
 > sed -e "s/XSession=.*/XSession=fluxbox/" /var/lib/AccountService/users/<staff> | sudo tee /var/lib/AccountService/users/<kiosk>
 > # edit /etc/gdm3/custom.conf for auto login
 > # [daemon]
 > # AutomaticLoginEnable = true
-> # AutomaticLogin = <kiosk>
+> # AutomaticLogin = <kiosk>```
