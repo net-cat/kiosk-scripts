@@ -60,6 +60,8 @@ open source software as possible, all tied together with a simple script.
 | Screen timeout   | ???                    | Run xscreensaver-demo, or ~/.xscreensaver    |
 | Change user      | Run installer          | Re-run installer                             |
 
+Site whitelisting requires Firefox 62 or better.
+
 ## Where is the installer script?
 
 I haven't written it yet.
@@ -69,3 +71,23 @@ I haven't written it yet.
 * Easier way to store firefox profile.
 * Uninstaller.
 * List of all the things the script changes.
+* Maybe do something to purge kiosk account's home directory at login?
+
+## Where files go
+
+* 50-autologin.conf : /etc/lightdm/lightdm.conf.d
+* 50-connect-wifi : /etc/sudoers.d
+* connect_wifi : /usr/bin
+
+## Notes for setting up Ubuntu 18.04
+
+NOTE: Don't set password for kiosk user to keep it off login screen.
+
+sudo useradd <kiosk>
+sudo cp -r /etc/skel /home/<kiosk>
+sudo chown -R <kiosk>:<kiosk> /home/<kiosk>
+sed -e "s/XSession=.*/XSession=fluxbox/" /var/lib/AccountService/users/<staff> | sudo tee /var/lib/AccountService/users/<kiosk>
+# edit /etc/gdm3/custom.conf for auto login
+# [daemon]
+# AutomaticLoginEnable = true
+# AutomaticLogin = <kiosk>
