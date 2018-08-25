@@ -1,0 +1,10 @@
+		
+		"Homepage": {
+			"URL": "https://faunited2018.eventbrite.com",
+			"Locked": true,
+			"Additional": ["https://paypal.com"]
+		},
+		"WebsiteFilter": {
+			"Block": ["<all_urls>"],
+			"Exceptions": ["https://*.eventbrite.com/*", "https://*.paypal.com"]
+		}

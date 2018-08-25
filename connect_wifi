@@ -1,0 +1,4 @@
+#!/bin/bash
+#nmcli d connect wlp1s0
+nmcli d wifi connect MakeeN password whatthefuckamidoing ifname wlp1s0
+
