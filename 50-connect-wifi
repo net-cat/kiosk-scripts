@@ -1,0 +1,3 @@
+Cmnd_Alias FLUXBOX_COMMANDS = /usr/local/bin/connect_wifi, /sbin/reboot
+faukiosk	ALL=(ALL) NOPASSWD:FLUXBOX_COMMANDS
+faustaff	ALL=(ALL) NOPASSWD:FLUXBOX_COMMANDS

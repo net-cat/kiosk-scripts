@@ -18,6 +18,8 @@ open source software as possible, all tied together with a simple script.
 3. The following packages will be installed:
    * fluxbox
    * xscreensaver
+   * python-toml
+   * xdotool
 4. xscreensaver's blanking will be set to 2 minutes and locking will be
    disabled. This can be changed with 
 4. policies.json will be installed in /usr/lib/firefox/distribution
@@ -29,7 +31,7 @@ open source software as possible, all tied together with a simple script.
 6. Kiosk user's default session will be set to fluxbox.
 7. Kiosk user's password will be scrambled.
 8. Kiosk user will be set to auto-login.
-9. A "connect_kiosk_wifi" script will be installed in /usr/local/bin. It's
+9. A "connect_wifi" script will be installed in /usr/local/bin. It's
    configuration file will be placed in /etc/kiosk.conf. A sudoers file will
    be added to /etc/sudoers.d to allow the kiosk user to execute that script.
 10. run_kiosk will be installed in /usr/local/bin. This script does not need
@@ -40,12 +42,11 @@ open source software as possible, all tied together with a simple script.
 
 1. The kiosk user will automatically log in on boot.
 2. run_kiosk will launch xscreensaver.
-3. run_kiosk will launch connect_kiosk_wifi.
+3. run_kiosk will launch connect_wifi.
 4. Once the initialization has run, the following steps will run in a loop:
    1. Firefox profile is erased.
-   2. Stored firefox profile is restored (if present in kiosk-firefox.tbz.)
-   3. Firefox is launched in private browsing mode with the sites specified in
-      kiosk.conf
+   2. Firefox is launched with the homepage in profiles.json
+   3. xdotool sends an F11 keystroke to Firefox. (Fullscreen.)
    4. Wait until firefox closes.
 5. If xscreensaver activates, firefox will be killed (and the loop above will
    run again.)
@@ -54,8 +55,8 @@ open source software as possible, all tied together with a simple script.
 
 | What             | Where (before install) | Where (after install)                        |
 | ---------------- | ---------------------- | -------------------------------------------- |
-| Wireless network | kiosk.conf             | /etc/kiosk.conf                              |
-| Default sites    | kiosk.conf             | /etc/kiosk.conf                              |
+| Wireless network | kiosk.toml             | /etc/kiosk.toml                              |
+| Default sites    | policies.json          | /usr/lib/firefox/distribution/policies.json  |
 | Site whitelist   | policies.json*         | /usr/lib/firefox/distribution/policies.json* |
 | Screen timeout   | ???                    | Run xscreensaver-demo, or ~/.xscreensaver    |
 | Change user      | Run installer          | Re-run installer                             |
@@ -77,7 +78,7 @@ I haven't written it yet.
 
 * 50-autologin.conf : /etc/lightdm/lightdm.conf.d
 * 50-connect-wifi : /etc/sudoers.d
-* connect_wifi : /usr/bin
+* connect_wifi : /usr/local/bin
 
 ## Notes for setting up Ubuntu 18.04
 

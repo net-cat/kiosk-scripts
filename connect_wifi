@@ -1,4 +1,20 @@
+#!/usr/bin/env python
 #!/bin/bash
-#nmcli d connect wlp1s0
-nmcli d wifi connect MakeeN password whatthefuckamidoing ifname wlp1s0
 
+import subprocess
+import toml
+
+config = toml.load('/etc/kiosk.toml').get('wifi', None)
+
+if config:
+    #nmcli d connect wlp1s0
+
+    cmd = [
+        "/usr/bin/nmcli", "d", "wifi", "connect",
+        config['ssid'],
+        "password", config['passphrase'],
+        "ifname", config["ifname"]
+    ]
+
+
+    subprocess.check_call(cmd, stdin=None, stderr=None, stdout=subprocess.PIPE)

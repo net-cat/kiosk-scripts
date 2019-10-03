@@ -10,6 +10,7 @@
 			"Locked": true
 		},
 		"DisableMasterPasswordCreation": true,
+		"DisableAppUpdate": true,
 		"DisableBuiltinPDFViewer": true,
 		"DisableDeveloperTools": true,
 		"DisableFeedbackCommands": true,
@@ -18,7 +19,7 @@
 		"DisableFirefoxStudies": true,
 		"DisableFormHistory": true,
 		"DisablePocket": true,
-		"DisablePrivateBrowsing": false,
+		"DisablePrivateBrowsing": true,
 		"DisableProfileImport": true,
 		"DisableProfileRefresh": true,
 		"DisableSafeMode": true,
@@ -26,7 +27,11 @@
 			"InvalidCertificate": true,
 			"SafeBrowsing": true
 		},
+		"DisableTelemetry": true,
+		"DisplayBookmarksToolbar": false,
+		"DisplayMenuBar": false,
 		"DontCheckDefaultBrowser": true,
+		"NewTabPage": false,
 		"NoDefaultBookmarks": true,
 		"OfferToSaveLogins": false,
 		"InstallAddonsPermission": {
@@ -36,6 +41,22 @@
 			"Default": false,
 			"Locked": true
 		},
-		"SanitizeOnShutdown": true
+		"OverrideFirstRunPage": "https://faunited.regfox.com/fa-united-2019",
+		"OverridePostUpdatePage": "https://faunited.regfox.com/fa-united-2019",
+		"SanitizeOnShutdown": true,
+		"SearchEngines": {
+			"Remove": ["Bing", "Amazon.com", "Debian packages", "DuckDuckGo", "Twitter", "Wikipedia (en)", "Google"]
+		},
+		"Homepage": {
+			"URL": "https://faunited.regfox.com/fa-united-2019",
+			"Additional": ["https://paypal.com"],
+			"Locked": true,
+			"StartPage": "homepage"
+		},
+		"SearchBar": "unified",
+		"WebsiteFilter": {
+			"Block": ["<all_urls>"],
+			"Exceptions": ["https://*.paypal.com/*", "https://*.regfox.com/*", "http://paypal.com"]
+		}
 	}
 }
